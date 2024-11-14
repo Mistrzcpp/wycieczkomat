@@ -1,0 +1,22 @@
+.custom-nav {
+    background-color: #343a40; /* Ciemne tło navbar */
+}
+
+.custom-nav .nav-link {
+    color: white; /* Kolor tekstu dla zakładek */
+}
+
+.custom-nav .nav-link.active {
+    background-color: #ffffff; /* Kolor tła aktywnej zakładki */
+    color: black; /* Kolor tekstu aktywnej zakładki */
+}
+
+.custom-nav .nav-link:hover {
+    background-color: #5a6268; /* Kolor tła przy hoverze */
+}
+
+/* Zmiana koloru tła samej treści zakładek */
+.tab-content {
+    background-color: #f8f9fa; /* Jasne tło dla treści zakładek */
+    padding: 20px;
+}
