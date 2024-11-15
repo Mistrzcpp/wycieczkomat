@@ -1,22 +1,52 @@
 .custom-nav {
-    background-color: #343a40; /* Ciemne tło navbar */
+    background-color: #4d577b; /* Ciemne tło navbar */
+    padding-bottom: 2px;
 }
 
 .custom-nav .nav-link {
     color: white; /* Kolor tekstu dla zakładek */
+    border: none;
 }
 
 .custom-nav .nav-link.active {
-    background-color: #ffffff; /* Kolor tła aktywnej zakładki */
+    background-color: #f7f7f3; /* Kolor tła aktywnej zakładki */
     color: black; /* Kolor tekstu aktywnej zakładki */
+    border: none;
 }
 
 .custom-nav .nav-link:hover {
-    background-color: #5a6268; /* Kolor tła przy hoverze */
+    background-color: #a2a7b7; /* Kolor tła przy hoverze */
+    border: none;
 }
 
 /* Zmiana koloru tła samej treści zakładek */
 .tab-content {
     background-color: #f8f9fa; /* Jasne tło dla treści zakładek */
     padding: 20px;
+}
+body{
+    background-color: #f7f7f3;
+}
+#inputsList{
+    background-color: #ffffff;
+}
+textarea{
+    overflow: auto;
+    resize: vertical;
+}
+textarea::-webkit-scrollbar {
+    display: none;
+}
+.dropdown-menu{
+    margin-top: -3px !important;
+}
+label{
+    white-space: normal;
+    word-wrap: break-word;
+}
+#addHeader{
+    font-size: x-large;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4d577b;
 }

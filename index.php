@@ -6,14 +6,30 @@
     <body>
         <div class="d-flex justify-content-center mt-5">
             <div class="d-flex flex-column align-items-center" style="box-shadow: 0px 0px 10px 0px #00000025; padding: 40px; border-radius: 10px; padding-left:50px; padding-right:50px">
-                <h1 style="margin-bottom: 40px;font-size: 26px;color: #255fc5;">Wycieczkomat</h1>
+                <h1 style="margin-bottom: 40px;font-size: 26px;color: #4d577b;">Wycieczkomat</h1>
                 <form action="login.php" method="POST">
-                    <input style="width: 250px;" type="text" class="form-control py-2 mb-3" placeholder="Login" name="login">
-                    <input type="password" class="form-control py-2" placeholder="Hasło" name="password">
                     <?php
                         session_start();
                         if(isset($_SESSION['login_error'])){
-                            echo '<p style="color:red; font-size:14px; margin-top:10px;">Niepoprawne dane</p>';
+                            echo '<div class="form-floating mb-3">
+                                <input style="width: 250px;" type="text" class="form-control is-invalid" id="floatingInput" placeholder="" name="login">
+                                <label for="floatingInput">Login</label>
+                            </div>
+                            <div class="form-floating">
+                                <input style="width: 250px;" type="password" class="form-control is-invalid" id="floatingPassword" placeholder="" name="password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <div class="invalid-feedback" style="display:block">Niepoprawne dane</div>';
+                        }
+                        else{
+                            echo '<div class="form-floating mb-3">
+                                <input style="width: 250px;" type="text" class="form-control" id="floatingInput" placeholder="" name="login">
+                                <label for="floatingInput">Login</label>
+                            </div>
+                            <div class="form-floating">
+                                <input style="width: 250px;" type="password" class="form-control" id="floatingPassword" placeholder="" name="password">
+                                <label for="floatingPassword">Password</label>
+                            </div>';
                         }
                     ?>
                     <div class="d-flex justify-content-end mt-5">
