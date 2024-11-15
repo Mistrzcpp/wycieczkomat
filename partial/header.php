@@ -5,11 +5,11 @@
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
-        <script src="./script.js"></script>
-        <link href="style.css" rel="stylesheet"/>
+        <script src="assets\script.js"></script>
+        <link href="assets\style.css" rel="stylesheet"/>
     </head>
     <body>
-        <nav>
+        <nav id="top">
             <div style="border: none;" class="nav nav-tabs custom-nav px-3 pb-0 pt-2" id="nav-tab" role="tablist">
                 <?php 
                     session_start(); 

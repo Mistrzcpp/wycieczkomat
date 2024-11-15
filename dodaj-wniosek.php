@@ -5,6 +5,7 @@
     $("#BrowseTab").removeClass("active");
 </script>
 <main class="row d-flex justify-content-center m-0">
+    <div class="col-6 text-center" id="liveAlertPlaceholder"></div>
     <div class="col-7 shadow rounded my-5" id="inputsList">
         <div class="d-flex justify-content-center">
             <span class="my-4" id="addHeader">Wniosek wycieczki</span> 
@@ -61,55 +62,55 @@
             <label style="margin-left: 10px;font-size: 17;" for="list-group"><b>Cele wycieczki</b></label>
             <ul class="mt-2 list-group">
                 <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-                    <label class="form-check-label" for="firstCheckbox">Poznawanie kraju, jego środowiska przyrodniczego, tradycji, zabytków kultury i historii</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="c1">
+                    <label class="form-check-label" for="c1">Poznawanie kraju, jego środowiska przyrodniczego, tradycji, zabytków kultury i historii</label>
                 </li>
                 <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-                    <label class="form-check-label" for="secondCheckbox">Poznawanie kultury i języka innych państw</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="c2">
+                    <label class="form-check-label" for="c2">Poznawanie kultury i języka innych państw</label>
                 </li>
                 <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-                    <label class="form-check-label" for="thirdCheckbox">Poszerzanie wiedzy z różnych dziedzin życia społecznego, gospodarczego i kulturalnego</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="c3">
+                    <label class="form-check-label" for="c3">Poszerzanie wiedzy z różnych dziedzin życia społecznego, gospodarczego i kulturalnego</label>
                 </li>
                 <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="fourthCheckbox">
-                    <label class="form-check-label" for="fourthCheckbox">Wspomaganie rodziny i szkoły w procesie wychowania</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="c4">
+                    <label class="form-check-label" for="c4">Wspomaganie rodziny i szkoły w procesie wychowania</label>
                 </li>
                 <li class="list-group-item d-flex">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="fifthCheckbox">
-                    <label style="margin-left: 4px;" class="form-check-label" for="fifthCheckbox">Upowszechnienie wśród uczniów zasad ochrony środowiska naturalnego oraz wiedzy o składnikach i funkcjonowaniu rodzimego środowiska przyrodniczego, a także umiejętności korzystania z zasobów przyrody</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="c5">
+                    <label style="margin-left: 4px;" class="form-check-label" for="c5">Upowszechnienie wśród uczniów zasad ochrony środowiska naturalnego oraz wiedzy o składnikach i funkcjonowaniu rodzimego środowiska przyrodniczego, a także umiejętności korzystania z zasobów przyrody</label>
                 </li>
                 <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="sixthCheckbox">
-                    <label class="form-check-label" for="sixthCheckbox">Upowszechnianie zdrowego stylu życia i aktywności fizycznej oraz podnoszenie sprawności fizycznej</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="c6">
+                    <label class="form-check-label" for="c6">Upowszechnianie zdrowego stylu życia i aktywności fizycznej oraz podnoszenie sprawności fizycznej</label>
                 </li>
                 <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="seventhCheckbox">
-                    <label class="form-check-label" for="seventhCheckbox">Poprawę stanu zdrowia uczniów pochodzących z terenów zagrożonych ekologicznie</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="c7">
+                    <label class="form-check-label" for="c7">Poprawę stanu zdrowia uczniów pochodzących z terenów zagrożonych ekologicznie</label>
                 </li>
                 <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="eighthCheckbox">
-                    <label class="form-check-label" for="eighthCheckbox">Przeciwdziałanie zachowaniom ryzykownym, w szczególności w ramach profilaktyki uniwersalnej</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="c8">
+                    <label class="form-check-label" for="c8">Przeciwdziałanie zachowaniom ryzykownym, w szczególności w ramach profilaktyki uniwersalnej</label>
                 </li>
                 <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="ninethCheckbox">
-                    <label class="form-check-label" for="ninethCheckbox">Poznawanie zasad bezpiecznego zachowania się w różnych sytuacjach</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="c9">
+                    <label class="form-check-label" for="c9">Poznawanie zasad bezpiecznego zachowania się w różnych sytuacjach</label>
                 </li>
             </ul>
             <label style="margin-left: 10px;font-size: 17;" class="mt-3" for="list-group"><b>Formy wycieczki</b></label>
             <ul class="mt-2 list-group">
                 <li class="list-group-item d-flex">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="tenthCheckbox">
-                    <label style="margin-left: 4px;" class="form-check-label" for="tenthCheckbox"><b>Wycieczki przedmiotowe</b> – inicjowane i realizowane przez nauczycieli w celu uzupełnienia obowiązującego programu nauczania, w ramach jednego lub kilku przedmiotów</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="f1">
+                    <label style="margin-left: 4px;" class="form-check-label" for="f1"><b>Wycieczki przedmiotowe</b> - inicjowane i realizowane przez nauczycieli w celu uzupełnienia obowiązującego programu nauczania, w ramach jednego lub kilku przedmiotów</label>
                 </li>
                 <li class="list-group-item d-flex">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="eleventhCheckbox">
-                    <label style="margin-left: 4px;" class="form-check-label" for="eleventhCheckbox"><b>Wycieczki krajoznawczo-turystyczne</b> - w których udział nie wymaga od uczniów przygotowania kondycyjnego i umiejętności posługiwania się specjalistycznym sprzętem, organizowanych w celu nabywania wiedzy o otaczającym środowisku i umiejętności zastosowania tej wiedzy w praktyce</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="f2">
+                    <label style="margin-left: 4px;" class="form-check-label" for="f2"><b>Wycieczki krajoznawczo-turystyczne</b> - w których udział nie wymaga od uczniów przygotowania kondycyjnego i umiejętności posługiwania się specjalistycznym sprzętem, organizowanych w celu nabywania wiedzy o otaczającym środowisku i umiejętności zastosowania tej wiedzy w praktyce</label>
                 </li>
                 <li class="list-group-item d-flex">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="twelfthCheckbox">
-                    <label style="margin-left: 4px;" class="form-check-label" for="twelfthCheckbox"><b>Specjalistyczne wycieczki krajoznawczo-turystyczne</b> - w których udział wymaga od uczniów przygotowania kondycyjnego, sprawnościowego i umiejętności posługiwania się specjalistycznym sprzętem, a program wycieczki przewiduje intensywną aktywność turystyczną, fizyczną lub długodystansowość na szlakach turystycznych</label>
+                    <input class="form-check-input me-1" type="checkbox" value="" id="f3">
+                    <label style="margin-left: 4px;" class="form-check-label" for="f3"><b>Specjalistyczne wycieczki krajoznawczo-turystyczne</b> - w których udział wymaga od uczniów przygotowania kondycyjnego, sprawnościowego i umiejętności posługiwania się specjalistycznym sprzętem, a program wycieczki przewiduje intensywną aktywność turystyczną, fizyczną lub długodystansowość na szlakach turystycznych</label>
                 </li>
             </ul>
             <div class="form-floating mt-3">
@@ -117,10 +118,11 @@
                 <label for="informacje">Informacje dodatkowe</label>
             </div>
             <div class="d-flex justify-content-center row">
-                <button type="button" class="btn btn-success mt-4 col-6">Zapisz wniosek</button>
+                <a href="#top" style="display: contents;"><button type="button" class="btn btn-success mt-4 col-6" id="liveAlertBtn">Zapisz wniosek</button></a>
             </div>
         </form>
     </div>
 </main>
-
+<script src="assets\validation.js"></script>
+<script src="assets\snippets.js"></script>
 <?php include 'partial/footer.php' ?>
