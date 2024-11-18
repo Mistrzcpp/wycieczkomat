@@ -25,7 +25,7 @@
             </div>
             <div class="row">
                 <div class="form-floating mb-3 col-2 ps-0" style="margin-left: 12px;">
-                    <input type="text" class="form-control" id="klasa" placeholder="" name="class">
+                    <input type="text" class="form-control" id="klasa" placeholder="" name="class" maxlength="3">
                     <label for="klasa">Klasa</label>
                 </div>
                 <div class="form-floating mb-3 col-2 ps-0">
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="miejsce" placeholder=""  name="place">
+                <input type="text" class="form-control" id="miejsce" placeholder=""  name="place" maxlength="200">
                 <label for="miejsce">Miejsce</label>
             </div>
             <div class="form-floating mb-3">
@@ -50,15 +50,15 @@
                 <label for="opiekunowie">Proponowani opiekunowie</label>
             </div>
             <div class="form-floating mb-3">
-                <textarea type="text" class="form-control" id="program" placeholder="" name="program"></textarea>
+                <textarea type="text" class="form-control" id="program" placeholder="" name="program" maxlength="2000"></textarea>
                 <label for="program">Program</label>
             </div>
             <div class="form-floating mb-3">
-                <textarea type="text" class="form-control" id="cel" placeholder="" name="purpose"></textarea>
+                <textarea type="text" class="form-control" id="cel" placeholder="" name="purpose" maxlength="2000"></textarea>
                 <label for="cel">Cel wycieczki</label>
             </div>
             <div class="form-floating mb-3">
-                <textarea type="text" class="form-control" id="korzysci" placeholder="" name="benefits"></textarea>
+                <textarea type="text" class="form-control" id="korzysci" placeholder="" name="benefits" maxlength="2000"></textarea>
                 <label for="korzysci"style="white-space: break-spaces;">Przewidywane korzyści i osiągnięcia uczniów</label>
             </div>
             <label style="margin-left: 10px;font-size: 17;" for="list-group"><b>Cele wycieczki</b></label>
@@ -120,11 +120,10 @@
                 <label for="informacje">Informacje dodatkowe</label>
             </div>
             <div class="d-flex justify-content-center row">
-                <a href="#top" style="display: contents;"><button type="submit" class="btn btn-success mt-4 col-6">Zapisz wniosek</button></a>
+                <a href="#top" style="display: contents;"><button type="submit" class="btn btn-success mt-4 col-6" id="saveButton">Zapisz wniosek</button></a>
             </div>
         </form>
     </div>
 </main>
 <script src="assets\validation.js"></script>
-<script src="assets\snippets.js"></script>
 <?php include 'partial/footer.php' ?>

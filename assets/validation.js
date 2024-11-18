@@ -26,12 +26,18 @@ $('#klasa').on('input', function(){
 $('#liczbaUczniow').on('input', function(){
     let regex = /^\d+$/;
     let count = $(this).val();
-    if(!regex.test(count))
+    if(!regex.test(count)){
         $(this).addClass('is-invalid');
-    else
+        $('#saveButton').attr('disabled');
+    }
+    else{
         $(this).removeClass('is-invalid');
-    if(count == '')
+        $('#saveButton').removeAttr('disabled');
+    }
+    if(count == ''){
         $(this).removeClass('is-invalid');
+        $('#saveButton').removeAttr('disabled');
+    }
 })
 $('#miejsce').on('input', function(){
     validateInputLength(this, 200);
