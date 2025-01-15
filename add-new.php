@@ -1,4 +1,5 @@
 <?php
+    include './partial/db-connection.php';
     session_start();
     $validationErr = false;
     $id = $_SESSION['user_id'];
@@ -38,20 +39,16 @@
     if(isset($_POST['f1'])) $formsArr[] = 1;
     if(isset($_POST['f2'])) $formsArr[] = 2;
     if(isset($_POST['f3'])) $formsArr[] = 3;
+    $opiekunowieArr = array();
+    if(isset($_POST['OpiekunowieId'])){
+        $temp = $_POST['OpiekunowieId'];
+        $opiekunowieArr = explode(' ', $temp);
+    }
 
     if($validationErr){
         header("Location: blad-dodawania.php");
     }
-
-    //polaczenie z baza
-    try{
-        $conn = new PDO("mysql:host=localhost;dbname=wycieczkomat", "root", "");
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } 
-    catch(PDOException $e){
-        echo "Databse connection failed: ".$e->getMessage();
-        exit();
-    }
+    
     $stmt = $conn->prepare("
         INSERT INTO 
 	        wnioski (kierownik_id,telefon,klasa,liczba_uczniow,data_od,data_do,miejsce,program,cel,korzysci,informacje_dodatkowe)
@@ -68,22 +65,60 @@
     $stmt -> bindParam(":purpose", $purpose);
     $stmt -> bindParam(":benefits", $benefits);
     $stmt -> bindParam(":information", $information);
-    $stmt -> execute();
+    try{
+        $stmt -> execute();
+    }catch(PDOException $e){
+        header("Location: blad-dodawania.php");
+    }
 
     $stmt = $conn->prepare("SELECT id FROM wnioski WHERE kierownik_id=:id ORDER BY data_utworzenia DESC LIMIT 1");
     $stmt -> bindParam(":id", $id);
-    $stmt -> execute();
+    try{
+        $stmt -> execute();
+    }catch(PDOException $e){
+        header("Location: blad-dodawania.php");
+    }
     $result = $stmt -> fetch(PDO::FETCH_ASSOC);
     $document_id = $result['id'];
 
     if(!empty($purposeArr)){
         $query = "";
         foreach($purposeArr as $p){
-            $query .= " (".$document_id.", ".$p."),";
+            $query .= " ({$document_id},{$p}),";
         }
         $query = substr_replace($query, '', -1);
-        $stmt = $conn->prepare("INSERT INTO wybrane_cele (wniosek_id, cel_id) VALUES".$query);
-        $stmt -> execute();
+        try{
+            $stmt = $conn->prepare("INSERT INTO wybrane_cele (wniosek_id, cel_id) VALUES".$query);
+            $stmt -> execute();
+        }catch(PDOException $e){
+            header("Location: blad-dodawania.php");
+        }
+    }
+    if(!empty($formsArr)){
+        $query = "";
+        foreach($formsArr as $f){
+            $query .= " ({$document_id},{$f}),";
+        }
+        $query = substr_replace($query, '', -1);
+        try{
+            $stmt = $conn->prepare("INSERT INTO wybrane_formy (wniosek_id, forma_id) VALUES".$query);
+            $stmt -> execute();
+        }catch(PDOException $e){
+            header("Location: blad-dodawania.php");
+        }
+    }
+    if(!empty($opiekunowieArr)){
+        $query = "";
+        foreach($opiekunowieArr as $o){
+            $query .= " ({$o},{$document_id}),";
+        }
+        $query = substr_replace($query, '', -1);
+        try{
+            $stmt = $conn->prepare("INSERT INTO opiekunowie (uzytkownik_id, wniosek_id) VALUES".$query);
+            $stmt -> execute();
+        }catch(PDOException $e){
+            header("Location: blad-dodawania.php");
+        }
     }
 
     header("Location: dodano.php");

@@ -1,15 +1,11 @@
-<?php include 'partial/header.php' ?>
-<script>
-    $("#AddNewTab").addClass("active");
-    $("#YoursTab").removeClass("active");
-    $("#BrowseTab").removeClass("active");
-</script>
+<?php include './partial/header.php' ?>
 <main class="row d-flex justify-content-center m-0">
     <div class="col-7 shadow rounded my-5" id="inputsList">
         <div class="d-flex justify-content-center">
             <span class="my-4" id="addHeader">Wniosek wycieczki</span> 
         </div> 
         <form action="add-new.php" method="POST">
+            <input type="hidden" id="OpiekunowieId" name="OpiekunowieId">
             <div class="row">
                 <div class="form-floating mb-3 col ps-0" style="margin-left: 12px;">
                     <?php echo '<input type="text" class="form-control" id="kierownik" placeholder="" value="'.$_SESSION['name'].' '.$_SESSION['surname'].'"disabled/>'?>
@@ -46,7 +42,7 @@
                 <label for="miejsce">Miejsce</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="opiekunowie" placeholder="">
+                <input type="text" class="form-control" id="opiekunowie" placeholder="" data-bs-toggle="modal" data-bs-target="#exampleModal" readonly>
                 <label for="opiekunowie">Proponowani opiekunowie</label>
             </div>
             <div class="form-floating mb-3">
@@ -124,6 +120,31 @@
             </div>
         </form>
     </div>
+<!--Modal window-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Opiekunowie</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="selected-items mb-2" id="selectedPeople">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Imię Nazwisko" aria-label="" aria-describedby="" id="searchInput">
+                        <button class="btn btn-outline-primary" type="button" id="button-search">Wyszukaj</button>
+                    </div>
+                    <div id="results">
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeButton">Zamknij</button>
+                    <button type="button" class="btn btn-success" id="saveButtonModal">Zapisz</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
-<script src="assets\validation.js"></script>
-<?php include 'partial/footer.php' ?>
+<script src="./assets/validation.js"></script>
+<script src="./assets/dodaj-wniosek.js"></script>
+<?php include './partial/footer.php' ?>

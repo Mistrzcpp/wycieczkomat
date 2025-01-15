@@ -1,4 +1,4 @@
-<?php include 'partial\header.php'?>
+<?php include './partial/header.php'?>
     <script>
         $("#AddNewTab").addClass("active");
         $("#YoursTab").removeClass("active");
@@ -9,5 +9,4 @@
             Błąd danych we wniosku. Sprawdź dane i <a href="dodaj-wniosek.php" class="alert-link">dodaj wniosek</a> jeszcze raz.
         </div>
     </div>
-    </script>
-<?php include 'partial\footer.php'?>
+<?php include './partia/footer.php'?>

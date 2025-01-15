@@ -1,4 +1,4 @@
-<?php include 'partial/header.php' ?>
+<?php include './partial/header.php' ?>
 <script>
     $("#AddNewTab").removeClass("active");
     $("#YoursTab").removeClass("active");
@@ -6,4 +6,4 @@
 </script>
 <p>Siema, to przeglądarka wniosków</p>
 
-<?php include 'partial/footer.php' ?>
+<?php include './partial/footer.php' ?>

@@ -50,3 +50,7 @@ label{
     font-family: Arial, Helvetica, sans-serif;
     color: #4d577b;
 }
+.checkbox-list {
+    max-height: 300px;
+    overflow-y: scroll;
+}

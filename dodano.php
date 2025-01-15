@@ -1,4 +1,4 @@
-<?php include 'partial\header.php'?>
+<?php include './partial/header.php'?>
     <script>
         $("#AddNewTab").addClass("active");
         $("#YoursTab").removeClass("active");
@@ -9,5 +9,4 @@
             Pomyślnie dodano nowy wniosek. Aby zobaczyć swoje wnioski <a href="dodaj-wniosek.php" class="alert-link">kliknij tutaj.</a>
         </div>
     </div>
-    </script>
-<?php include 'partial\footer.php'?>
+<?php include './partial/footer.php'?>

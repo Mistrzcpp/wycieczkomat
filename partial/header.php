@@ -5,8 +5,7 @@
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
-        <script src="assets\script.js"></script>
-        <link href="assets\style.css" rel="stylesheet"/>
+        <link href="./assets/style.css" rel="stylesheet"/>
     </head>
     <body>
         <nav id="top">
@@ -24,7 +23,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item-dropdown">
                         <a class="m-0 px-2 nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="./resources/account_icon.svg" width="40" height="40"/>
+                            <img src="./img/account_icon.svg" width="40" height="40"/>
                             <span style="color:white;font-size:16px">Cześć, <?php
                                 echo $_SESSION['name']; ?>!</span>
                         </a>
