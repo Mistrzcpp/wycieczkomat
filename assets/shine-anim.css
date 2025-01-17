@@ -1,0 +1,36 @@
+.shine {
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.shine:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;  /* Początkowa pozycja: poza widokiem (po lewej stronie) */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+    );
+    transition: none;  /* Usunięcie transition, używamy animacji */
+}
+
+/* Uruchom animację tylko po najechaniu */
+.shine:hover:before {
+    animation: shineEffect 650ms forwards; /* Przypisanie animacji do :hover */
+}
+
+/* Definicja animacji */
+@keyframes shineEffect {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}

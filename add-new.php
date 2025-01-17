@@ -1,5 +1,5 @@
 <?php
-    include './partial/db-connection.php';
+    include "./partial/db-connection.php";
     session_start();
     $validationErr = false;
     $id = $_SESSION['user_id'];

@@ -4,7 +4,7 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } 
     catch(PDOException $e){
-        echo "Databse connection failed: ".$e->getMessage();
+        header("Location: blad.php");
         exit();
     }
 ?>

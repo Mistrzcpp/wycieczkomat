@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    include './partial/db-connection.php';
+    include "./partial/db-connection.php";
+    @session_start();
     $name = $_POST['name'];
     if(!strlen($name) == 0){
         $sql = "SELECT  u.id, u.imie, u.nazwisko FROM uzytkownicy u WHERE concat_ws(' ', u.imie, u.nazwisko) LIKE '%".$name."%' LIMIT 10";

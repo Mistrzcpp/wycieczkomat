@@ -1,0 +1,19 @@
+#searchDiv{
+    background-color: white !important;
+}
+#searchResults{
+    background-color: white !important;
+}
+.tripHeader{
+    font-size: large !important;
+    font-weight: 700;
+    margin-bottom: 1em;
+    border-bottom: 0.1em solid gray;
+}
+button{
+    width: 100 !important;
+    margin-top: 1em !important;
+}
+.trip{
+    width: auto !important;
+}

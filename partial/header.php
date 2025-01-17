@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
-        <link href="./assets/style.css" rel="stylesheet"/>
+        <link href="./assets/header.css" rel="stylesheet"/>
     </head>
     <body>
         <nav id="top">

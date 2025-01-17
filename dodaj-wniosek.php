@@ -1,4 +1,8 @@
 <?php include './partial/header.php' ?>
+<script src="./assets/validation.js"></script>
+<script src="./assets/dodaj-wniosek.js"></script>
+<link rel="stylesheet" href="./assets/dodaj-wniosek.css">
+
 <main class="row d-flex justify-content-center m-0">
     <div class="col-7 shadow rounded my-5" id="inputsList">
         <div class="d-flex justify-content-center">
@@ -145,6 +149,4 @@
         </div>
     </div>
 </main>
-<script src="./assets/validation.js"></script>
-<script src="./assets/dodaj-wniosek.js"></script>
 <?php include './partial/footer.php' ?>

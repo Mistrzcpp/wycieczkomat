@@ -1,0 +1,6 @@
+.shine {
+    transition: transform 0.4s ease-in-out;
+}
+.shine:hover {
+    transform: scale(1.07);
+}
