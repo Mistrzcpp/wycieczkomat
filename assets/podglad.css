@@ -63,3 +63,17 @@ th{
 table{
     margin-top: 2em !important;
 }
+#opiekunowie, #program, #celOpis, #korzysci, #informacje{
+    text-align: left;
+    padding-left: 1em !important;
+}
+#forma div, #cel div{
+    padding: 1em !important;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 4em !important;
+}
+#forma span, #cel span{
+    margin-bottom: 1em;
+}

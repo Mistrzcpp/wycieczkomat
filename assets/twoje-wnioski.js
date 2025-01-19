@@ -29,8 +29,8 @@ $(document).ready(function(){
         });
     });
     $(document).on('click', '.trip', function(){
-        window.location.href = window.location.origin + "/podglad.php";
-        console.log($(this).attr("id"))
+        let id = $(this).attr("id");
+        window.location.href = window.location.origin + `/podglad.php?id=${id}`;
     });
     $("#searchButton").click();
    
