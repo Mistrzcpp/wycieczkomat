@@ -17,3 +17,7 @@ button{
 .trip{
     width: auto !important;
 }
+div.tripMain div{
+    display: flex;
+    justify-content: space-between;
+}

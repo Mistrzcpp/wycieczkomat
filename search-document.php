@@ -80,19 +80,33 @@
     foreach($result as $r){
         $id = $r['id'];
         $dest = $r['miejsce'];
-        $dateFrom = $r['data_od'];
+        $dateFrom = explode(" ", $r['data_od']);
+        $date = $dateFrom[0];
+        $hour = substr($dateFrom[1], 0, 5);
         $class = $r['klasa'];
         $color = $colorsArr[array_rand($colorsArr)];
         echo "
-            <div class=\"shadow rounded col-12 col-sm-6 col-md-4 col-lg-3 m-2 pulse shine p-3 d-flex flex-column trip\" style=\"background-color: {$color} !important\" id=\"{$id}\">
-                <span class=\"tripHeader\">{$dest}</span>
-                <span>{$dateFrom}</span>
-                <span>{$class}</span>
-                <div>
-                    <button type=\"button\" class=\"btn btn-primary p-2\">Podgląd</button>
-                    <button type=\"button\" class=\"btn btn-primary p-2\">Edytuj</button>
-                </div>
-            </div> 
+            <div class=\"col-md-6 col-lg-3\">
+                <div class=\"shadow rounded m-2 pulse shine p-3 d-flex flex-column trip\" style=\"background-color: {$color} !important\" id=\"{$id}\">
+                    <div class=\"headerDiv\">
+                        <p class=\"tripHeader\">{$dest}</p>
+                    </div>
+                    <div class=\"tripMain\">
+                        <div>
+                            <span>Data:</span>
+                            <span>{$date}</span>
+                        </div>
+                        <div>
+                            <span>Godzina:</span>
+                            <span>{$hour}</span>
+                        </div>
+                        <div>
+                            <span>Klasa:</span>
+                            <span>{$class}</span>
+                        </div>
+                    </div>
+                </div> 
+            </div>
         ";
     }
 ?>
