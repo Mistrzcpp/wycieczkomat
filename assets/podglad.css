@@ -49,16 +49,16 @@ th{
     padding-right: 2em;
 }
 .szkola{
-    width: 200px;
-    height: 100px;
+    width: 150px;
+    height: 75px;
     display: inline;
     margin-left: 2em !important;
 }
 #wniosek{
     margin-right: auto;
     align-self: flex-end;
-    font-weight: 700;
-    font-size: 1.3em;
+    font-weight: 600;
+    font-size: 1.2em;
 }
 table{
     margin-top: 2em !important;
@@ -76,4 +76,8 @@ table{
 }
 #forma span, #cel span{
     margin-bottom: 1em;
+}
+#header{
+    align-items: flex-end !important;
+    justify-content: space-between !important;
 }

@@ -6,24 +6,37 @@
     $name = $_SESSION['name'];
     $surname = $_SESSION['surname'];
     $phone = $_POST['phone'];
+    if(empty($phone)) $phone = null;
     if(strlen($phone) > 15) $validationErr = true;
     $class = $_POST['class'];
+    if(empty($class)) $class = null;
     if(strlen($class) > 3) $validationErr = true;
+    $school = $_POST['szkola'];
+    if($school == 0) $school = null;
     $numberOf = $_POST['numberOfStudents'];
-    if(!ctype_digit($numberOf)) $validationErr = true;
+    if(empty($numberOf)) $numberOf = null;
+    if(!ctype_digit($numberOf) && $numberOf > 100) $validationErr = true;
     $dateFrom = $_POST['dateFrom'];
     $dateFrom = str_replace("T", " ", $dateFrom);
     $dateTo = $_POST['dateTo'];
     $dateTo = str_replace("T", " ", $dateTo);
+    $startDate = new DateTime($dateFrom);
+    $endDate = new DateTime($dateTo);
+    if($startDate > $endDate) $validationErr = true;
     $place = $_POST['place'];
+    if(empty($place)) $place = null;
     if(strlen($place) > 200) $validationErr = true;
     $program = $_POST['program'];
+    if(empty($program)) $program = null;
     if(strlen($program) > 2000) $validationErr = true;
     $purpose = $_POST['purpose'];
+    if(empty($purpose)) $purpose = null;
     if(strlen($purpose) > 2000) $validationErr = true;
     $benefits = $_POST['benefits'];
+    if(empty($benefits)) $benefits = null;
     if(strlen($benefits) > 2000) $validationErr = true;
     $information = $_POST['information'];
+    if(empty($information)) $information = null;
     if(strlen($information) > 2000) $validationErr = true;
     $purposeArr = array();
     $formsArr = array();
@@ -51,9 +64,9 @@
     
     $stmt = $conn->prepare("
         INSERT INTO 
-	        wnioski (kierownik_id,telefon,klasa,liczba_uczniow,data_od,data_do,miejsce,program,cel,korzysci,informacje_dodatkowe)
+	        wnioski (kierownik_id,telefon,klasa,liczba_uczniow,data_od,data_do,miejsce,program,cel,korzysci,informacje_dodatkowe,szkola)
         VALUES
-	        (:id,:phone,:class,:numberOf,:dateFrom,:dateTo,:place,:program,:purpose,:benefits,:information);");
+	        (:id,:phone,:class,:numberOf,:dateFrom,:dateTo,:place,:program,:purpose,:benefits,:information,:school);");
     $stmt -> bindParam(":id", $id);
     $stmt -> bindParam(":phone", $phone);
     $stmt -> bindParam(":class", $class);
@@ -65,6 +78,7 @@
     $stmt -> bindParam(":purpose", $purpose);
     $stmt -> bindParam(":benefits", $benefits);
     $stmt -> bindParam(":information", $information);
+    $stmt -> bindParam(":school", $school);
     try{
         $stmt -> execute();
     }catch(PDOException $e){

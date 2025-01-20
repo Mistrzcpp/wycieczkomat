@@ -18,6 +18,7 @@
             w.cel,
             w.korzysci,
             w.informacje_dodatkowe,
+	        s.szkola,
             concat(u.imie, \" \", u.nazwisko) kierownik,
             date_format(w.data_od, '%Y-%m-%d') dataOd, 
             date_format(w.data_od, '%H:%i') godzinaOd,
@@ -28,6 +29,7 @@
             (SELECT group_concat(concat(u.imie, \" \", u.nazwisko) SEPARATOR \", \") FROM opiekunowie o JOIN uzytkownicy u ON u.id = o.uzytkownik_id WHERE o.wniosek_id = w.id ) opiekunowie
         FROM wnioski w 
         JOIN uzytkownicy u ON u.id = w.kierownik_id
+        LEFT JOIN szkoly s ON s.id = w.szkola 
         WHERE w.kierownik_id = {$userId} AND w.id = {$docId}";
     $stmt = $conn -> prepare($query);
     try{
@@ -67,6 +69,11 @@
         }
         array_push($celeArr, "<span class=\"cele\">{$prefix}".$c["opis"]."</span>");
     }
+
+    if($result['dataOd'] == "0000-00-00")$result['dataOd'] = ""; else $result['dataOd'] = $result['dataOd']." — ";
+    if($result['godzinaOd'] == "00:00") $result['godzinaOd'] = ""; else $result['godzinaOd'] = $result['godzinaOd']." — ";
+    if($result['dataDo'] == "0000-00-00") $result['dataDo'] = "";
+    if($result['godzinaDo'] == "00:00") $result['godzinaDo'] = "";
 
     
 ?>

@@ -6,7 +6,9 @@
 <main class="row d-flex align-items-center m-0 flex-column">
     <div class="rounded mx-0 mt-3 p-3 col-lg-8 row d-flex justify-content-center" id="page">
         <div class="m-0 p-0 col-lg-10 d-flex" id="header">
-            <span id="wniosek">WNIOSEK - WYCIECZKA</span>
+            <div>
+                <span id="wniosek">WNIOSEK - WYCIECZKA</span>
+            </div>
             <div>
                 <img class="szkola" src="./img/sp311.png">
                 <img class="szkola" src="./img/lo11.png">
@@ -26,13 +28,13 @@
                 <th id="miejsceTh">Miejsce docelowe wycieczki</th>
             </tr>
             <tr>
-                <td id="klasa"><?php echo $result['klasa'] ?></td>
+                <td id="klasa"><?php echo $result['klasa']." ".$result['szkola'] ?></td>
                 <td id="liczbaUczniow"><?php echo $result['liczba_uczniow'] ?></td>
                 <td id="data">
                     <?php 
-                        echo "<span>".str_replace("-",".",$result['dataOd'])." -</span><span>".str_replace("-",".",$result['dataDo']."</span>")
+                        echo "<span>".str_replace("-",".",$result['dataOd'])." </span><span>".str_replace("-",".",$result['dataDo']."</span>")
                     ?></td>
-                <td id="godzina"><?php echo $result['godzinaOd']." - ".$result['godzinaDo']?></td>
+                <td id="godzina"><?php echo $result['godzinaOd'].$result['godzinaDo']?></td>
                 <td id="miejsce"><?php echo $result['miejsce'] ?></td>
             </tr>
             <tr>
@@ -76,4 +78,5 @@
         </div>
     </div>
 </main>
+<script src="./assets/podglad.js">
 <?php include "./partial/footer.php"?>

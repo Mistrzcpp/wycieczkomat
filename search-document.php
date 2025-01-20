@@ -83,6 +83,8 @@
         $dateFrom = explode(" ", $r['data_od']);
         $date = $dateFrom[0];
         $hour = substr($dateFrom[1], 0, 5);
+        if($date == "0000-00-00") $date = "";
+        if($hour == "00:00") $hour = "";
         $class = $r['klasa'];
         $color = $colorsArr[array_rand($colorsArr)];
         echo "

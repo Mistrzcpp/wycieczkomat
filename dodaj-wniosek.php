@@ -1,5 +1,4 @@
 <?php include './partial/header.php' ?>
-<script src="./assets/validation.js"></script>
 <script src="./assets/dodaj-wniosek.js"></script>
 <link rel="stylesheet" href="./assets/dodaj-wniosek.css">
 
@@ -18,25 +17,35 @@
                 <div class="mb-3 col ps-0 input-group">
                     <span class="input-group-text">+48</span>
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="telefon" placeholder="" name="phone" maxlength="9" />
+                        <input type="number" class="form-control" id="telefon" placeholder="" name="phone"/>
                         <label for="telefon">Telefon</label>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="form-floating mb-3 col-2 ps-0" style="margin-left: 12px;">
+            <div class="row g-3">
+                <div class="form-floating mb-3 col-2 px-0" style="margin-left: 12px;">
                     <input type="text" class="form-control" id="klasa" placeholder="" name="class" maxlength="3">
                     <label for="klasa">Klasa</label>
                 </div>
-                <div class="form-floating mb-3 col-2 ps-0">
-                    <input type="text" class="form-control" id="liczbaUczniow" placeholder="" name="numberOfStudents">
-                    <label for="liczbaUczniow">Liczba uczniów</label>
+                <div class="col-lg-2 col-sm-4 mb-3">
+                    <div class="input-group m-0 h-100">
+                        <select class="form-select" id="szkola" name="szkola">
+                            <option value="0" selected hidden>Szkoła</option>
+                            <option value="1">SP311</option>
+                            <option value="2">LO11</option>
+                            <option value="3">TIE9</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-floating mb-3 col ps-0">
+                    <input type="number" class="form-control" id="liczbaUczniow" placeholder="" name="numberOfStudents">
+                    <label for="liczbaUczniow">Liczba uczniów</label>
+                </div>
+                <div class="form-floating mb-3 col-lg-3">
                     <input type="datetime-local" class="form-control" id="dataOd" placeholder="" name="dateFrom">
                     <label for="dataOd">Data od</label>
                 </div>
-                <div class="form-floating mb-3 col ps-0">
+                <div class="form-floating mb-3 col-lg-3">
                     <input type="datetime-local" class="form-control" id="dataDo" placeholder=""  name="dateTo">
                     <label for="dataDo">Data do</label>
                 </div>
@@ -149,4 +158,5 @@
         </div>
     </div>
 </main>
+<script src="./assets/validation.js"></script>
 <?php include './partial/footer.php' ?>
