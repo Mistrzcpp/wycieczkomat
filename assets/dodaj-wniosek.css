@@ -1,35 +1,89 @@
-#inputsList{
-    background-color: #ffffff;
+/* Ogólny styl dla inputów i textarea */
+.input-field {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-sizing: border-box;
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	margin: 5px 0;
+	background-color: #f9f9f9;
 }
-textarea{
-    overflow: auto;
-    resize: vertical;
+#kierownik {
+	width: 60%;
 }
-textarea::-webkit-scrollbar {
-    display: none;
+#telefon {
+	width: 30%;
 }
-.dropdown-menu{
-    margin-top: -3px !important;
+/* Styl dla komórek tabeli */
+td {
+	padding: 10px;
 }
-label{
-    white-space: normal;
-    word-wrap: break-word;
+li {
+	display: flex !important;
+	text-align: left;
 }
-#addHeader{
-    font-size: x-large;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #4d577b;
+/* Styl dla tabeli */
+table {
+	width: 100%;
+	border-collapse: collapse;
 }
-.checkbox-list {
-    max-height: 300px;
-    overflow-y: scroll;
+#save {
+	display: flex;
+	margin-top: 1em;
+	justify-content: center;
 }
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+#savebutton {
+	width: 30%;
 }
-input[type="number"] {
-    -moz-appearance: textfield;
+th,
+td {
+	text-align: left;
+	vertical-align: middle;
+}
+
+/* Styl dla textarea */
+textarea {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-sizing: border-box;
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	margin: 5px 0;
+	background-color: #f9f9f9;
+	min-height: 100px;
+}
+
+/* Styl dla wierszy z podpisami */
+.kropki {
+	text-align: center;
+	font-size: 16px;
+}
+
+/* Opcjonalnie dodaj tło dla formularza */
+#page {
+	background-color: #fff;
+}
+
+/* Dla drukowanych wersji */
+@media print {
+	.input-field {
+		background-color: #fff;
+		border: none;
+		padding: 0;
+		font-size: 14px;
+	}
+
+	textarea {
+		background-color: #fff;
+		border: none;
+		padding: 0;
+	}
+
+	.kropki {
+		font-size: 14px;
+	}
 }

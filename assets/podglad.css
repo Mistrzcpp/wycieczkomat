@@ -1,83 +1,132 @@
-td,th{
-    border: 1px solid black !important;
-    text-wrap: auto !important;
-    text-align: center;
+body {
+	background-color: #fff;
 }
-th{
-    background-color: #e1e1e1 !important;
-    width: 25%;
-}
-#miejsceTh{
-    width: auto;
-}
-#godzinyTh, #dataTh{
-    width: 17%;
-}
-#liczbaTh{
-    width: 7%;
-}
-#programTh, #celOpisTh, #korzysciTh, #celTh, #formaTh, #infTh{
-    padding-top: 3em !important;
-    padding-bottom: 3em !important;
-}
-#kierownikTh{
-    padding-top: 0.5em !important;
-    padding-bottom: 0.5em !important;
 
+main {
+	justify-content: space-evenly;
 }
-#klasaTh, #opiekunowieTh, #klasa{
-    padding-top: 1.5em !important;
-    padding-bottom: 1.5em !important;
+
+#header {
+	align-items: flex-end !important;
+	justify-content: space-between !important;
 }
-#kierownikFooter, #zgodaFooter{
-    border: 1px solid black;
-    width: min-content;
-    padding-top: 0.5em !important;
-    padding-bottom: 0.5em !important;
+
+#sideBar {
+	background-color: white;
+	align-items: center;
 }
-#footer{
-    justify-content: space-between;
-    text-align: center;
-    margin-top: 4em !important;
+
+#sideBar button {
+	margin-bottom: 1.8em !important;
+	padding: 0.7em 0;
+	width: 80%;
 }
-#page{
-    background-color: white !important;
+
+#page {
+	background-color: white !important;
 }
-.kropki{
-    padding-top: 5em;
-    padding-left: 2em;
-    padding-right: 2em;
+
+.szkola {
+	width: 150px;
+	height: 75px;
+	display: inline;
+	margin-left: 2em !important;
 }
-.szkola{
-    width: 150px;
-    height: 75px;
-    display: inline;
-    margin-left: 2em !important;
+
+#wniosek {
+	margin-right: auto;
+	align-self: flex-end;
+	font-weight: 600;
+	font-size: 1.2em;
 }
-#wniosek{
-    margin-right: auto;
-    align-self: flex-end;
-    font-weight: 600;
-    font-size: 1.2em;
+
+#footer {
+	justify-content: space-between;
+	text-align: center;
+	margin-top: 4em !important;
 }
-table{
-    margin-top: 2em !important;
+
+#kierownikFooter,
+#zgodaFooter {
+	border: 1px solid black;
+	width: min-content;
+	padding-top: 0.5em !important;
+	padding-bottom: 0.5em !important;
 }
-#opiekunowie, #program, #celOpis, #korzysci, #informacje{
-    text-align: left;
-    padding-left: 1em !important;
+
+table {
+	margin-top: 2em !important;
 }
-#forma div, #cel div{
-    padding: 1em !important;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    padding-left: 4em !important;
+
+td,
+th {
+	border: 1px solid black !important;
+	text-align: center;
+	text-wrap: auto !important;
 }
-#forma span, #cel span{
-    margin-bottom: 1em;
+
+th {
+	background-color: #e1e1e1 !important;
+	width: 25%;
 }
-#header{
-    align-items: flex-end !important;
-    justify-content: space-between !important;
+
+#miejsceTh {
+	width: auto;
+}
+
+#godzinyTh,
+#dataTh {
+	width: 17%;
+}
+
+#liczbaTh {
+	width: 7%;
+}
+
+#programTh,
+#celOpisTh,
+#korzysciTh,
+#celTh,
+#formaTh,
+#infTh {
+	padding-top: 3em !important;
+	padding-bottom: 3em !important;
+}
+
+#kierownikTh {
+	padding-top: 0.5em !important;
+	padding-bottom: 0.5em !important;
+}
+
+#klasaTh,
+#opiekunowieTh,
+#klasa {
+	padding-top: 1.5em !important;
+	padding-bottom: 1.5em !important;
+}
+
+#opiekunowie,
+#program,
+#celOpis,
+#korzysci,
+#informacje {
+	text-align: left;
+	padding-left: 1em !important;
+}
+
+#forma div,
+#cel div {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	padding: 1em 0 1em 4em !important;
+}
+
+#forma span,
+#cel span {
+	margin-bottom: 1em;
+}
+
+.kropki {
+	padding: 5em 2em 0 2em;
 }

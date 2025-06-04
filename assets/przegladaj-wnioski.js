@@ -1,6 +1,6 @@
 $("#AddNewTab").removeClass("active");
-$("#YoursTab").addClass("active");
-$("#BrowseTab").removeClass("active");
+$("#YoursTab").removeClass("active");
+$("#BrowseTab").addClass("active");
 
 function textShorter() {
 	$(".tripHeader").each(function () {
@@ -14,7 +14,7 @@ function textShorter() {
 $(document).ready(function () {
 	$("#searchBar").on("input", function () {
 		$("#searchResults").load(
-			"search-document.php",
+			"search-all-documents.php",
 			{
 				search: $("#searchBar").val(),
 			},
@@ -25,7 +25,7 @@ $(document).ready(function () {
 	});
 	$("#searchButton").on("click", function () {
 		$("#searchResults").load(
-			"search-document.php",
+			"search-all-documents.php",
 			{
 				search: $("#searchBar").val(),
 			},

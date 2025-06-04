@@ -1,12 +1,11 @@
-<?php
-include "./partial/header.php";
-?>
-<link id="page-css" rel="stylesheet" href="assets/dodaj-wniosek.css">
+<?php include "./podglad-backend.php"; ?>
+<link id="page-css" rel="stylesheet" href="dodaj-wniosek.css">
 <link id="page-css" rel="stylesheet" href="./assets/podglad.css">
 
 <main class="row m-0" id="main">
     <div class="rounded mx-0 mt-3 p-3 col-lg-8" id="page">
-        <form action="add-new.php" method="POST">
+        <form action="edit.php" method="POST">
+            <?php echo '<input name="docId" type="hidden" value="' . $_POST['id'][0] . '">' ?>
             <div class="m-0 row d-flex justify-content-center">
                 <div class="m-0 p-0 col-lg-10 d-flex" id="header">
                     <div>
@@ -23,7 +22,7 @@ include "./partial/header.php";
                         <th id="kierownikTh">Kierownik wycieczki/<br>telefon</th>
                         <td colspan="5" id="kierowniktd">
                             <?php echo '<input type="text" class="input-field" id="kierownik" placeholder="Imie i nazwisko" value="' . $_SESSION['name'] . ' ' . $_SESSION['surname'] . '"disabled/>' ?>
-                            <input type="text" name="telefon" class="input-field" id="telefon" placeholder="Telefon" maxlength="9">
+                            <?php echo '<input type="text" name="telefon" class="input-field" id="telefon" placeholder="Telefon" maxlength="9" value="' . $result['telefon'] . '">' ?>
                         </td>
                     </tr>
                     <tr>
@@ -35,48 +34,48 @@ include "./partial/header.php";
                     </tr>
                     <tr>
                         <td id="klasa">
-                            <input type="text" name="klasa" class="input-field" placeholder="Wpisz klasę">
+                            <?php echo '<input type="text" name="klasa" class="input-field" placeholder="Wpisz klasę" value="' . $result['klasa'] . '">' ?>
                         </td>
                         <td id="liczbaUczniow">
-                            <input type="number" name="liczbaUczniow" class="input-field" min="0" placeholder="...">
+                            <?php echo '<input type="number" name="liczbaUczniow" class="input-field" min="0" placeholder="..." value="' . $result['liczba_uczniow'] . '">' ?>
                         </td>
                         <td id="data">
-                            <input type="date" name="dataOd" class="input-field">
+                            <?php echo '<input type="date" name="dataOd" class="input-field" value="' . substr($result['dataOd'], 0, 10) . '">' ?>
                             <p>do</p>
-                            <input type="date" name="dataDo" class="input-field">
+                            <?php echo '<input type="date" name="dataDo" class="input-field" value="' . substr($result['dataDo'], 0, 10) . '">' ?>
                         </td>
                         <td id="godzina">
-                            <input type="time" name="godzinaOd" class="input-field">
+                            <?php echo '<input type="time" name="godzinaOd" class="input-field" value="' . substr($result['godzina_od'], 0, 5) . '">' ?>
                             <p>do</p>
-                            <input type="time" name="godzinaDo" class="input-field">
+                            <?php echo '<input type="time" name="godzinaDo" class="input-field" value="' . substr($result['godzina_do'], 0, 5) . '">' ?>
                         </td>
                         <td id="miejsce">
-                            <input type="text" name="miejsce" class="input-field" placeholder="Miejsce wycieczki">
+                            <?php echo '<input type="text" name="miejsce" class="input-field" placeholder="Miejsce wycieczki" value="' . $result['miejsce'] . '">' ?>
                         </td>
                     </tr>
                     <tr>
                         <th id="opiekunowieTh">Proponowani opiekunowie<br>(imiona i nazwiska<br>nauczycieli)</th>
                         <td colspan="5">
-                            <input type="hidden" id="OpiekunowieId" name="OpiekunowieId">
-                            <input type="text" id="opiekunowie" name="opiekunowie" class="input-field" placeholder="Imiona i nazwiska opiekunów" data-bs-toggle="modal" data-bs-target="#exampleModal" readonly>
+                            <?php echo '<input type="hidden" id="OpiekunowieId" name="OpiekunowieId" value="' . $result["opiekunowieId"] . '">' ?>
+                            <?php echo '<input type="text" id="opiekunowie" name="opiekunowie" class="input-field" placeholder="Imiona i nazwiska opiekunów" data-bs-toggle="modal" data-bs-target="#exampleModal" value="' . $result['opiekunowie'] . '" readonly>' ?>
                         </td>
                     </tr>
                     <tr>
                         <th id="programTh">Program wycieczki</th>
                         <td colspan="5" id="program">
-                            <textarea name="program" class="input-field" placeholder="Opis programu wycieczki"></textarea>
+                            <?php echo '<textarea name="program" class="input-field" placeholder="Opis programu wycieczki">' . $result['program'] . '</textarea>' ?>
                         </td>
                     </tr>
                     <tr>
                         <th id="celOpisTh">Cel wycieczki (opis)</th>
                         <td colspan="5" id="celOpis">
-                            <textarea name="celOpis" class="input-field" placeholder="Opis celu wycieczki"></textarea>
+                            <?php echo '<textarea name="celOpis" class="input-field" placeholder="Opis celu wycieczki">' . $result['cel'] . '</textarea>' ?>
                         </td>
                     </tr>
                     <tr>
                         <th id="korzysciTh">Przewidywane korzyści i osiągnięcia uczniów</th>
                         <td colspan="5" id="korzysci">
-                            <textarea name="korzysci" class="input-field" placeholder="Korzyści i osiągnięcia uczniów"></textarea>
+                            <?php echo '<textarea name="korzysci" class="input-field" placeholder="Korzyści i osiągnięcia uczniów">' . $result['korzysci'] . '</textarea>' ?>
                         </td>
                     </tr>
                     <tr>
@@ -144,7 +143,7 @@ include "./partial/header.php";
                     <tr>
                         <th id="infTh">Informacje dodatkowe<br>(w przypadku<br>wycieczki wyjazdowej)</th>
                         <td colspan="5" id="informacje">
-                            <textarea name="informacje" class="input-field" placeholder="Informacje dodatkowe"></textarea>
+                            <?php echo '<textarea name="informacje" class="input-field" placeholder="Informacje dodatkowe">' . $result['informacje_dodatkowe'] . '</textarea>' ?>
                         </td>
                     </tr>
                 </table>
@@ -189,6 +188,24 @@ include "./partial/header.php";
             </div>
         </div>
     </div>
+
+
+    <script>
+        const cele = <?php echo json_encode($wybraneCele); ?>;
+        cele.forEach(cel => {
+            const checkbox = document.getElementById('c' + cel);
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        });
+        const formy = <?php echo json_encode($wybraneFormy); ?>;
+        formy.forEach(forma => {
+            const checkbox = document.getElementById('f' + forma);
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        });
+    </script>
     <script src="./assets/validation.js"></script>
     <script src="./assets/dodaj-wniosek.js"></script>
     <?php include "./partial/footer.php" ?>

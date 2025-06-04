@@ -1,45 +1,61 @@
 <?php
 include "./partial/db-connection.php";
-session_start();
+@session_start();
+$docId = $_POST['docId'];
+if (!isset($docId)) {
+    header("Location: blad.php");
+}
+
 $validationErr = false;
 $id = $_SESSION['user_id'];
 $name = $_SESSION['name'];
 $surname = $_SESSION['surname'];
+
 $phone = $_POST['telefon'];
 if (empty($phone)) $phone = null;
 if (strlen($phone) > 15) $validationErr = true;
+
 $class = $_POST['klasa'];
 if (empty($class)) $class = null;
-if (strlen($class) > 3) $validationErr = true;
+
 $school = $_POST['szkola'];
 if ($school == 0) $school = null;
+
 $numberOf = $_POST['liczbaUczniow'];
 if (empty($numberOf)) $numberOf = null;
 if (!ctype_digit($numberOf) && $numberOf > 100) $validationErr = true;
+
 $dateFrom = $_POST['dataOd'];
-$dateFrom = str_replace("T", " ", $dateFrom);
+if (empty($dateFrom)) $dateFrom = null;
 $dateTo = $_POST['dataDo'];
-$dateTo = str_replace("T", " ", $dateTo);
-$startDate = new DateTime($dateFrom);
-$endDate = new DateTime($dateTo);
+if (empty($dateTo)) $dateTo = null;
+
 $hourFrom = $_POST['godzinaOd'];
+if (empty($hourFrom)) $hourFrom = null;
 $hourTo = $_POST['godzinaDo'];
+if (empty($hourTo)) $hourTo = null;
 if ($startDate > $endDate) $validationErr = true;
+
 $place = $_POST['miejsce'];
 if (empty($place)) $place = null;
 if (strlen($place) > 200) $validationErr = true;
+
 $program = $_POST['program'];
 if (empty($program)) $program = null;
 if (strlen($program) > 2000) $validationErr = true;
+
 $purpose = $_POST['celOpis'];
 if (empty($purpose)) $purpose = null;
 if (strlen($purpose) > 2000) $validationErr = true;
+
 $benefits = $_POST['korzysci'];
 if (empty($benefits)) $benefits = null;
 if (strlen($benefits) > 2000) $validationErr = true;
+
 $information = $_POST['informacje'];
 if (empty($information)) $information = null;
 if (strlen($information) > 2000) $validationErr = true;
+
 $purposeArr = array();
 $formsArr = array();
 if (isset($_POST['c1'])) $purposeArr[] = 1;
@@ -65,11 +81,22 @@ if ($validationErr) {
 }
 
 $stmt = $conn->prepare("
-        INSERT INTO 
-	        wnioski (kierownik_id,telefon,klasa,liczba_uczniow,data_od,data_do,godzina_od,godzina_do,miejsce,program,cel,korzysci,informacje_dodatkowe,szkola)
-        VALUES
-	        (:id,:phone,:class,:numberOf,:dateFrom,:dateTo,:hourFrom,:hourTo,:place,:program,:purpose,:benefits,:information,:school);");
-$stmt->bindParam(":id", $id);
+        UPDATE wnioski w SET 
+        data_utworzenia = NOW(), 
+        telefon = :phone, 
+        klasa = :class, 
+        liczba_uczniow = :numberOf, 
+        data_od = :dateFrom, 
+        data_do = :dateTo, 
+        godzina_od = :hourFrom, 
+        godzina_do = :hourTo, 
+        miejsce = :place, 
+        program = :program, 
+        cel = :purpose, 
+        korzysci = :benefits, 
+        informacje_dodatkowe = :information
+        WHERE w.id = :id");
+$stmt->bindParam(":id", $docId);
 $stmt->bindParam(":phone", $phone);
 $stmt->bindParam(":class", $class);
 $stmt->bindParam(":numberOf", $numberOf);
@@ -82,23 +109,37 @@ $stmt->bindParam(":program", $program);
 $stmt->bindParam(":purpose", $purpose);
 $stmt->bindParam(":benefits", $benefits);
 $stmt->bindParam(":information", $information);
-$stmt->bindParam(":school", $school);
+
+$_SESSION['id'] = $docId;
+$_SESSION['phone'] = $phone;
+$_SESSION['class'] = $class;
+$_SESSION['numberOf'] = $numberOf;
+$_SESSION['dateFrom'] = $dateFrom;
+$_SESSION['dateTo'] = $dateTo;
+$_SESSION['hourFrom'] = $hourFrom;
+$_SESSION['hourTo'] = $hourTo;
+$_SESSION['place'] = $place;
+$_SESSION['program'] = $program;
+$_SESSION['purpose'] = $purpose;
+$_SESSION['benefits'] = $benefits;
+$_SESSION['information'] = $information;
+
 try {
     $stmt->execute();
 } catch (PDOException $e) {
     header("Location: blad-dodawania.php");
 }
+//////////////////
 
-$stmt = $conn->prepare("SELECT id FROM wnioski WHERE kierownik_id=:id ORDER BY data_utworzenia DESC LIMIT 1");
-$stmt->bindParam(":id", $id);
+$stmt = $conn->prepare("DELETE FROM wybrane_cele WHERE wniosek_id = :docId");
+$stmt->bindParam(":docId", $docId);
 try {
     $stmt->execute();
 } catch (PDOException $e) {
-    header("Location: blad-dodawania.php");
+    header("Location: blad.php");
 }
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
-$document_id = $result['id'];
 
+$document_id = $docId;
 if (!empty($purposeArr)) {
     $query = "";
     foreach ($purposeArr as $p) {
@@ -112,6 +153,16 @@ if (!empty($purposeArr)) {
         header("Location: blad-dodawania.php");
     }
 }
+///////////////////
+
+$stmt = $conn->prepare("DELETE FROM wybrane_formy WHERE wniosek_id = :docId");
+$stmt->bindParam(":docId", $docId);
+try {
+    $stmt->execute();
+} catch (PDOException $e) {
+    header("Location: blad.php");
+}
+
 if (!empty($formsArr)) {
     $query = "";
     foreach ($formsArr as $f) {
@@ -125,6 +176,16 @@ if (!empty($formsArr)) {
         header("Location: blad-dodawania.php");
     }
 }
+////////////////////
+
+$stmt = $conn->prepare("DELETE FROM opiekunowie WHERE wniosek_id = :docId");
+$stmt->bindParam(":docId", $docId);
+try {
+    $stmt->execute();
+} catch (PDOException $e) {
+    header("Location: blad.php");
+}
+
 if (!empty($opiekunowieArr)) {
     $query = "";
     foreach ($opiekunowieArr as $o) {
@@ -138,5 +199,6 @@ if (!empty($opiekunowieArr)) {
         header("Location: blad-dodawania.php");
     }
 }
+///////////////////////
 
-header("Location: dodano.php");
+header('Location: twoje-wnioski.php');

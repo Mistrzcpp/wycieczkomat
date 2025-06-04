@@ -4,7 +4,7 @@ include "./partial/db-connection.php";
 $search = trim($_POST['search']);
 $id = $_SESSION['user_id'];
 if (strlen($search) > 0) {
-    $whereClause = "(w.data_zmiany_statusu LIKE '%{$search}%' OR
+    $whereClause = "w.data_zmiany_statusu LIKE '%{$search}%' OR
         w.data_utworzenia LIKE '%{$search}%' OR
         w.telefon LIKE '%{$search}%' OR
         w.klasa LIKE '%{$search}%' OR
@@ -25,9 +25,11 @@ if (strlen($search) > 0) {
         FROM wybrane_formy wf 
         JOIN formy_wycieczki fw ON fw.id = wf.forma_id
         WHERE wf.wniosek_id = w.id 
-        ) LIKE '%{$search}%') AND w.kierownik_id = {$id}";
+        ) LIKE '%{$search}%' OR
+        u.imie LIKE '%{$search}%' OR
+        u.nazwisko LIKE '%{$search}%'";
 } else {
-    $whereClause = "w.kierownik_id = {$id}";
+    $whereClause = "1=1";
 }
 $query =
     "SELECT 
@@ -63,6 +65,7 @@ $query =
             WHERE wf.wniosek_id = w.id 
             ) AS wybrane_formy
         FROM wnioski w 
+        JOIN uzytkownicy u ON u.id = w.kierownik_id
         WHERE {$whereClause}
         ORDER BY w.data_utworzenia DESC";
 

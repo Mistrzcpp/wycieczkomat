@@ -1,0 +1,49 @@
+#page {
+	width: 700px;
+}
+.szkola {
+	height: 50px !important;
+	margin-left: 20px;
+}
+#header {
+	margin-bottom: 30px !important;
+}
+table {
+	border-collapse: collapse;
+}
+td,
+th {
+	border: 0.3px solid black;
+	padding: 8px;
+	font-size: 0.8em;
+}
+th {
+	background-color: #e1e1e1 !important;
+	width: 25%;
+}
+#cel div,
+#forma div {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	padding: 1em 0 1em 4em !important;
+}
+#cel span,
+#forma span {
+	margin-bottom: 1em;
+}
+#break {
+	height: 100px;
+	break-after: page;
+	page-break-after: always;
+	break-after: page;
+}
+#programTh,
+#celOpisTh,
+#korzysciTh,
+#celTh,
+#formaTh,
+#infTh {
+	padding-top: 4em !important;
+	padding-bottom: 4em !important;
+}

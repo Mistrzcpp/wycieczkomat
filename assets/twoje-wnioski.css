@@ -16,6 +16,7 @@ button{
 }
 .trip{
     width: auto !important;
+    cursor: pointer !important;
 }
 div.tripMain div{
     display: flex;
